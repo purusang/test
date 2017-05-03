@@ -1,0 +1,38 @@
+<?php
+$om = \Magento\Framework\App\ObjectManager::getInstance();
+
+
+    $customerSession = $om->get('Magento\Customer\Model\Session');
+    if($customerSession->isLoggedIn()) {
+        echo   $customerSession->getCustomer()->getId()."<br/>";  // get Customer Id
+        echo   $customerSession->getCustomer()->getName()."<br/>";  // get  Full Name
+        echo   $customerSession->getCustomer()->getEmail()."<br/>"; // get Email Name
+        echo   $customerSession->getCustomer()->getGroupId()."<br/>";  // get Customer Group Id
+      }
+      else{
+      	echo "none logged in.";
+      }  
+echo $block->getBaseUrl1();
+// fetch all the products in category $categoryId .
+      $categoryId = 9;
+$getProudctcollection = $block->getCategoryProduct($categoryId);
+?>
+	<ul class="category-products">  
+        <?php foreach ($getProudctcollection as $product) : ?>
+                    <li class="level0-child">
+                        <a href="<?php echo $product->getProductUrl(); ?>">
+                            <?php 
+                            echo "<pre>";
+                            print_r($product->getThumbnail());
+                            ?>
+                            <img src= "<?php echo $block->getBaseUrl1();?>/pub/media/catalog/product<?php echo $product->getThumbnail();?>"/>
+                        </a>
+                    </li> 
+        <?php   endforeach;?>
+    </ul>
+sdf  
+  	<?php //echo $this->getLayout()->createBlock("Magento\CatalogWidget\Block\Product\ProductsList\Interceptor")->setTemplate("Magento_CatalogWidget::product/widget/content/grid.phtml")->toHtml();?>
+
+<?php
+ //echo $block->getBlockProductsHtml($getProudctcollection) ?>
+  	sdlfkjdlkfsldkfjldkfj	
